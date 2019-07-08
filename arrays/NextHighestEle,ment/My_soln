@@ -1,0 +1,78 @@
+/*package whatever //do not write package name here */
+//Passes all cases but doesnt get submitted
+//
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+    
+    static void print_ans(long arr[],int n)
+    {
+        
+        long brr[] = new long[n];//this stores the answer
+       
+       int j=0;int l=0;
+        for(int i=0;i<n;i++)
+        {
+            for(j=i+1;j<n;j++)
+            {   
+                if(arr[i] < arr[j]){
+                    //System.out.print(arr[j] +" ");
+                    brr[l]  =  arr[j];//stores the larger element and breaks as it has found 
+                    l++;
+                    break;
+                }
+               
+            }
+              if(j == n)
+                {   brr[l]  = -1;//if there are no larger element then it has to reach the end index
+                    l++;
+                  
+                }
+        }
+        //for printing the answer
+        for(int i=0;i<n;i++)
+           System.out.print(brr[i] +" ");
+    
+        System.out.println();
+    }
+    
+     
+    
+    
+   // https://ide.geeksforgeeks.org/SirrnGVcjl
+    
+    
+	public static void main (String[] args)throws IOException {
+		//code
+		GFG res = new GFG();
+	   BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int test = Integer.parseInt(br.readLine()); 
+		while(test-->0){
+		    //something wrong here
+		  //  int size = Integer.parseInt(br.readLine());
+		  //  int k=Integer.parseInt(br.readLine());
+		    
+		    //errors here
+		    String[] integersInString = br.readLine().split(" ");
+            int a[] = new int[integersInString.length];
+            for (int i = 0; i < integersInString.length; i++) {
+               a[i] = Integer.parseInt(integersInString[i]);
+            }
+            
+            int size = a[0];
+           // int k = a[1];
+		      
+
+		    //testing haha
+		    long[] arr = new long[size];
+		    String line = br.readLine(); 
+            String[] strs = line.trim().split("\\s+"); 
+		    for(int i=0;i<size;i++){
+		        arr[i]=Integer.parseInt(strs[i]); 
+		      }
+		      print_ans(arr,size);
+	}
+}
+}

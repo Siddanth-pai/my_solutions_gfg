@@ -1,0 +1,194 @@
+//source: geeks4geeks
+import java.util.*; 
+public class New_Class 
+{ 
+    public static void main(String[] args) 
+    { 
+  
+        // Initializing a Dictionary 
+        Dictionary geek = new Hashtable(); 
+  
+        // put() method 
+        geek.put("123", "Code"); 
+        geek.put("456", "Program"); 
+  
+        // elements() method : 
+        for (Enumeration i = geek.elements(); i.hasMoreElements();) 
+        { 
+            System.out.println("Value in Dictionary : " + i.nextElement()); 
+        } 
+  
+        // get() method : 
+        System.out.println("\nValue at key = 6 : " + geek.get("6")); 
+        System.out.println("Value at key = 456 : " + geek.get("123")); 
+  
+        // isEmpty() method : 
+        System.out.println("\nThere is no key-value pair : " + geek.isEmpty() + "\n"); 
+  
+        // keys() method : 
+        for (Enumeration k = geek.keys(); k.hasMoreElements();) 
+        { 
+            System.out.println("Keys in Dictionary : " + k.nextElement()); 
+        } 
+  
+        // remove() method : 
+        System.out.println("\nRemove : " + geek.remove("123")); 
+        System.out.println("Check the value of removed key : " + geek.get("123")); 
+  
+        System.out.println("\nSize of Dictionary : " + geek.size()); 
+  
+    } 
+} 
+
+Output:
+
+Value in Dictionary : Code
+Value in Dictionary : Program
+
+Value at key = 6 : null
+Value at key = 456 : Code
+
+There is no key-value pair : false
+
+Keys in Dictionary : 123
+Keys in Dictionary : 456
+
+Remove : Code
+Check the value of removed key : null
+
+Size of Dictionary : 1
+
+
+
+    put(K key, V value) : java.util.Dictionary.put(K key, V value) adds key-value pair to the dictionary
+    Syntax :
+
+    public abstract V put(K key, V value)
+    Parameters : 
+    -> key
+    -> value
+    Return : 
+    key-value pair mapped in the dictionary
+
+    elements() : java.util.Dictionary.elements() returns value representation in dictionary
+    Syntax :
+
+    public abstract Enumeration elements()
+    Parameters : 
+    --------
+    Return : 
+    value enumeration in dictionary
+
+    get(Object key) : java.util.Dictionary.get(Object key) returns the value that is mapped with the argumented key in the dictionary
+    Syntax :
+
+    public abstract V get(Object key)
+    Parameters : 
+    key - key whose mapped value we want
+    Return : 
+    value mapped with the argumented key
+
+    isEmpty() : java.util.Dictionary.isEmpty() checks whether the dictionary is empty or not.
+    Syntax :
+
+    public abstract boolean isEmpty()
+    Parameters : 
+    ------
+    Return : 
+    true, if there is no key-value relation in the dictionary; else false
+
+    keys() : java.util.Dictionary.keys() returns key representation in dictionary
+    Syntax :
+
+    public abstract Enumeration keys()
+    Parameters : 
+    --------
+    Return : 
+    key enumeration in dictionary
+
+    remove(Object key) : java.util.Dictionary.remove(Object key) removes the key-value pair mapped with the argumented key.
+    Syntax :
+
+    public abstract V remove(Object key)
+    Parameters : 
+    key : key to be removed
+    Return : 
+    value mapped with the key
+
+    size() : java.util.Dictionary.size() returns the no. of key-value pairs in the Dictionary
+    Syntax :
+
+    public abstract int size()
+    Parameters : 
+    -------
+    Return : 
+    returns the no. of key-value pairs in the Dictionary
+
+
+
+
+    put(K key, V value) : java.util.Dictionary.put(K key, V value) adds key-value pair to the dictionary
+    Syntax :
+
+    public abstract V put(K key, V value)
+    Parameters : 
+    -> key
+    -> value
+    Return : 
+    key-value pair mapped in the dictionary
+
+    elements() : java.util.Dictionary.elements() returns value representation in dictionary
+    Syntax :
+
+    public abstract Enumeration elements()
+    Parameters : 
+    --------
+    Return : 
+    value enumeration in dictionary
+
+    get(Object key) : java.util.Dictionary.get(Object key) returns the value that is mapped with the argumented key in the dictionary
+    Syntax :
+
+    public abstract V get(Object key)
+    Parameters : 
+    key - key whose mapped value we want
+    Return : 
+    value mapped with the argumented key
+
+    isEmpty() : java.util.Dictionary.isEmpty() checks whether the dictionary is empty or not.
+    Syntax :
+
+    public abstract boolean isEmpty()
+    Parameters : 
+    ------
+    Return : 
+    true, if there is no key-value relation in the dictionary; else false
+
+    keys() : java.util.Dictionary.keys() returns key representation in dictionary
+    Syntax :
+
+    public abstract Enumeration keys()
+    Parameters : 
+    --------
+    Return : 
+    key enumeration in dictionary
+
+    remove(Object key) : java.util.Dictionary.remove(Object key) removes the key-value pair mapped with the argumented key.
+    Syntax :
+
+    public abstract V remove(Object key)
+    Parameters : 
+    key : key to be removed
+    Return : 
+    value mapped with the key
+
+    size() : java.util.Dictionary.size() returns the no. of key-value pairs in the Dictionary
+    Syntax :
+
+    public abstract int size()
+    Parameters : 
+    -------
+    Return : 
+    returns the no. of key-value pairs in the Dictionary
+
+

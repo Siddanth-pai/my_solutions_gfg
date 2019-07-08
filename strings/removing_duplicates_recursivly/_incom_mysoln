@@ -1,0 +1,64 @@
+/*package whatever //do not write package name here */
+//mississipie doesnotwork
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+   static int i=0;    
+	public static void main (String[] args) {
+		//code
+	
+		 Scanner s=new Scanner(System.in);
+	     int t=s.nextInt();
+	     while(t-->0){
+	         String str1=s.next();
+	         //String str2=s.next();
+	        
+	         rmdup(str1);
+	        
+	     }  
+	}
+	
+	
+	 static String b="";
+	static  void rmdup(String s)
+	{  
+	   Stack<Character> stck  = new Stack<>();
+	     String a="";char b = '0';
+	   for(int i=0;i<s.length();i++)
+	   {
+	       
+	       if(stck.empty() == true){
+	           stck.push(s.charAt(i));
+	       }
+	       
+	       else if(stck.peek() != s.charAt(i))
+	       {
+	           stck.push(s.charAt(i));
+	       }
+	       else{
+	           //if(stck.peek() == s.charAt(i))
+	           b = stck.pop();
+	           if(i < s.length()-1){
+	               i++;
+	          try{ 
+	           while( i <s.length()  && b == s.charAt(i)){
+	               i++;
+	           }}catch(StringIndexOutOfBoundsException e)
+	           {
+	               //System.out.println(s);
+	           }
+	           i--;
+	               
+	           }
+	       }
+	   }
+	   
+	       while(stck.empty() == false && stck.peek() != null)
+	       {
+	           a =  stck.pop() + a;
+	       }
+	       System.out.println(a);
+	   	}
+}

@@ -1,0 +1,285 @@
+//https://www.geeksforgeeks.org/java-util-vector-class-java/
+
+
+
+
+
+The Vector class implements a growable array of objects. Vectors basically falls in legacy classes but now it is fully compatible with collections.
+
+    Vector implements a dynamic array that means it can grow or shrink as required. Like an array, it contains components that can be accessed using an integer index
+    They are very similar to ArrayList but Vector is synchronised and have some legacy method which collection framework does not contain.
+    It extends AbstractList and implements List interfaces.
+
+Constructor:
+
+    Vector(): Creates a default vector of initial capacity is 10.
+    Vector(int size): Creates a vector whose initial capacity is specified by size.
+    Vector(int size, int incr): Creates a vector whose initial capacity is specified by size and increment is specified by incr. It specifies the number of elements to allocate each time that a vector is resized upward.
+    Vector(Collection c): Creates a vector that contains the elements of collection c.
+
+Important points regarding Increment of vector capacity:
+If increment is specified, Vector will expand according to it in each allocation cycle but if increment is not specified then vector’s capacity get doubled in each allocation cycle. Vector defines three protected data member:
+
+    int capacityIncreament: Contains the increment value.
+    int elementCount: Number of elements currently in vector stored in it.
+    Object elementData[]: Array that holds the vector is stored in it.
+
+
+
+
+
+
+
+
+
+
+boolean contains(Object o): This method returns true if this vector contains the specified element.
+
+    Syntax: public boolean contains(object o)
+    Returns: true if the operation is succeeded otherwise false.
+    Exception: NA.
+    
+
+filter_none
+
+edit
+
+play_arrow
+
+brightness_5
+// Java code illustrating contains() method 
+import java.util.*; 
+class Vector_demo { 
+    public static void main(String[] arg) 
+    { 
+  
+        // create default vector 
+        Vector v = new Vector(); 
+  
+        v.add(1); 
+        v.add(2); 
+        v.add("geeks"); 
+        v.add("forGeeks"); 
+        v.add(3); 
+  
+        // check whether vector contains "forGeeks" 
+        if (v.contains("forGeeks")) 
+            System.out.println("forGeeks exists"); 
+    } 
+}
+
+Output:
+
+    forGeeks exists
+
+
+
+
+
+
+
+
+
+Object clone() This method returns a clone of this vector.
+
+    Syntax: public Object clone()
+    Returns: a clone of this ArrayList instance.
+    Exception: NA.
+    
+
+filter_none
+
+edit
+
+play_arrow
+
+brightness_5
+// Java code illustrating clone() 
+import java.util.*; 
+class Vector_demo { 
+    public static void main(String[] arg) 
+    { 
+  
+        // create default vector 
+        Vector v = new Vector(); 
+  
+        Vector v_clone = new Vector(); 
+  
+        v.add(0, 1); 
+        v.add(1, 2); 
+        v.add(2, "geeks"); 
+        v.add(3, "forGeeks"); 
+        v.add(4, 3); 
+  
+        v_clone = (Vector)v.clone(); 
+  
+        // checking vector 
+        System.out.println("Clone of v: " + v_clone); 
+    } 
+}
+
+Output:
+
+    Clone of v: [1, 2, geeks, forGeeks, 3]
+
+
+
+
+
+
+
+
+
+Methods in Vector:
+
+    boolean add(Object obj): This method appends the specified element to the end of this vector.
+
+    Syntax: public boolean add(Object obj)
+        Returns: true if the specified element is added 
+        successfully into the Vector, otherwise it returns false.
+        Exception: NA.
+        
+
+    filter_none
+
+    edit
+
+    play_arrow
+
+    brightness_5
+    // Java code illustrating add() method 
+    import java.util.*; 
+    class Vector_demo { 
+        public static void main(String[] arg) 
+        { 
+      
+            // create default vector 
+            Vector v = new Vector(); 
+      
+            v.add(1); 
+            v.add(2); 
+            v.add("geeks"); 
+            v.add("forGeeks"); 
+            v.add(3); 
+      
+            System.out.println("Vector is " + v); 
+        } 
+    }
+
+    Output:
+
+
+        [1, 2, geeks, forGeeks, 3]
+        
+
+
+
+
+
+
+boolean contains(Object o): This method returns true if this vector contains the specified element.
+
+    Syntax: public boolean contains(object o)
+    Returns: true if the operation is succeeded otherwise false.
+    Exception: NA.
+    
+
+filter_none
+
+edit
+
+play_arrow
+
+brightness_5
+// Java code illustrating contains() method 
+import java.util.*; 
+class Vector_demo { 
+    public static void main(String[] arg) 
+    { 
+  
+        // create default vector 
+        Vector v = new Vector(); 
+  
+        v.add(1); 
+        v.add(2); 
+        v.add("geeks"); 
+        v.add("forGeeks"); 
+        v.add(3); 
+  
+        // check whether vector contains "forGeeks" 
+        if (v.contains("forGeeks")) 
+            System.out.println("forGeeks exists"); 
+    } 
+}
+
+Output:
+
+    forGeeks exists
+    
+
+
+
+
+
+Object get(int index):This method returns the element at the specified position in this Vector.
+
+    Syntax: public void ensureCapacity(int minCapacity)
+    Returns: returns the element at specified positions .
+    Exception: IndexOutOfBoundsException -- if the index is out of range.
+    
+
+filter_none
+
+edit
+
+play_arrow
+
+brightness_5
+// Java code illustrating get() methods 
+import java.util.*; 
+class Vector_demo { 
+    public static void main(String[] arg) 
+    { 
+  
+        // create default vector of capacity 10 
+        Vector v = new Vector(); 
+  
+        v.add(1); 
+        v.add(2); 
+        v.add("Geeks"); 
+        v.add("forGeeks"); 
+        v.add(4); 
+  
+        // get the element at index 2 
+        System.out.println("element at indexx 2 is: " + v.get(2)); 
+    } 
+}
+
+Output:
+
+
+    element at indexx 2 is: Geeks
+
+
+
+
+object[ ] toArray(): This method returns a array representation of this Vector, containing the String representation of each element.
+
+    Syntax: public  object[ ] toArray()
+    Returns: an array containing all of the elements in this collection.
+    Exception: NA.
+    
+    
+
+
+
+
+
+
+    
+
+
+    
+
+
+

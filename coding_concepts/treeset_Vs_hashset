@@ -1,0 +1,112 @@
+
+HashSet vs TreeSet in Java
+
+    Speed and internal implementation
+    HashSet : For operations like search, insert and delete. It takes constant time for these operations on average. HashSet is faster than TreeSet. HashSet is Implemented using a hash table.
+
+    TreeSet : TreeSet takes O(Log n) for search, insert and delete which is higher than HashSet. But TreeSet keeps sorted data. Also, it supports operations like higher() (Returns least higher element), floor(), ceiling(), etc. These operations are also O(Log n) in TreeSet and not supported in HashSet. TreeSet is implemented using a Self Balancing Binary Search Tree (Red-Black Tree). TreeSet is backed by TreeMap in Java.
+    Ordering
+    Elements in HashSet are not ordered. TreeSet maintains objects in Sorted order defined by either Comparable or Comparator method in Java. TreeSet elements are sorted in ascending order by default. It offers several methods to deal with the ordered set like first(), last(), headSet(), tailSet(), etc.
+    Null Object
+    HashSet allows null object. TreeSet doesn’t allow null Object and throw NullPointerException, Why, because TreeSet uses compareTo() method to compare keys and compareTo() will throw java.lang.NullPointerException.
+    Comparison
+    HashSet uses equals() method to compare two object in Set and for detecting duplicates. TreeSet uses compareTo() method for same purpose.
+    If equals() and compareTo() are not consistent, i.e. for two equal object equals should return true while compareTo() should return zero, than it will break contract of Set interface and will allow duplicates in Set implementations like TreeSet
+
+If you want a sorted Set then it is better to add elements to HashSet and then convert it into TreeSet rather than creating a TreeSet and adding elements to it.
+
+HashSet example
+filter_none
+
+edit
+
+play_arrow
+
+brightness_5
+// Java program to demonstrate working of 
+// HashSet 
+import java.util.HashSet; 
+class HashSetDemo { 
+    public static void main(String[] args) 
+    { 
+  
+        // Create a HashSet 
+        HashSet<String> hset = new HashSet<String>(); 
+  
+        // add elements to HashSet 
+        hset.add("geeks"); 
+        hset.add("for"); 
+        hset.add("practice"); 
+        hset.add("contribute"); 
+  
+        // Duplicate removed 
+        hset.add("geeks"); 
+  
+        // Displaying HashSet elements 
+        System.out.println("HashSet contains: "); 
+        for (String temp : hset) { 
+            System.out.println(temp); 
+        } 
+    } 
+} 
+Output:
+
+HashSet contains: 
+practice
+geeks
+for
+contribute
+
+TreeSet example
+
+
+filter_none
+
+edit
+
+play_arrow
+
+brightness_5
+// Java program to demonstrate working of 
+// TreeSet. 
+import java.util.TreeSet; 
+class TreeSetDemo { 
+  
+    public static void main(String[] args) 
+    { 
+        // Create a TreeSet 
+        TreeSet<String> tset = new TreeSet<String>(); 
+  
+        // add elements to HashSet 
+        tset.add("geeks"); 
+        tset.add("for"); 
+        tset.add("practice"); 
+        tset.add("contribute"); 
+  
+        // Duplicate removed 
+        tset.add("geeks"); 
+  
+        // Displaying TreeSet elements 
+        System.out.println("TreeSet contains: "); 
+        for (String temp : tset) { 
+            System.out.println(temp); 
+        } 
+    } 
+} 
+Output:
+
+TreeSet contains: 
+contribute
+for
+geeks
+practice
+
+When to prefer TreeSet over HashSet
+
+1. Sorted unique elements are required instead of unique elements. The sorted list given by TreeSet is always in ascending order.
+
+2. TreeSet has greater locality than HashSet.If two entries are near by in the order, then TreeSet places them near each other in data structure and hence in memory, while HashSet spreads the entries all over memory regardless of the keys they are associated to.
+
+3. TreeSet uses Red- Black tree algorithm underneath to sort out the elements. When one need to perform read/write operations frequently, then TreeSet is a good choice.
+
+4. LinkedHashSet is another data structure that is between these two. It provides time complexities like HashSet and maintains order of insertion (Note that this is not sorted order, but the order in which elements are inserted).

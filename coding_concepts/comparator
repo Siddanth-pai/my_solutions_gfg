@@ -1,0 +1,245 @@
+//https://www.interviewbit.com/problems/largest-number/
+//https://www.geeksforgeeks.org/comparator-interface-java/
+//https://www.codejava.net/java-core/collections/sorting-arrays-examples-with-comparable-and-comparator
+//https://www.programcreek.com/2013/11/arrays-sort-comparator/
+3. Sorting an array of Objects using a Comparator
+Besides using the Comparable implementation approach, it’s also possible to sort an array of Objects by passing an implementation of the java.util.Comparator interface to the Arrays.sort() method:
+
+Arrays.sort(array, comparator)
+The Comparator interface defines a compare() method that imposes a total ordering on some collection of objects. Its purpose is similar to the Comparable’s compareTo() method, but is independent of the objects being compared. For example, the following comparator does the same thing as the Employee’s compareTo() method above:
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+	
+package net.codejava.arrays;
+ 
+import java.util.Comparator;
+ 
+/**
+ * This comparator compares two employees by their salaries (lower first).
+ * @author www.codejava.net
+ *
+ */
+public class EmployeeSalaryComparator implements Comparator<Employee> {
+ 
+    @Override
+    public int compare(Employee emp1, Employee emp2) {
+        return emp1.getSalary() - emp2.getSalary();
+    }
+}
+And pass this comparator to the Arrays.sort() method as follows:
+
+1
+	
+Arrays.sort(employees, new EmployeeSalaryComparator());
+Here is an example with some dummy data:
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+	
+Employee[] newEmployees = new Employee[4];
+ 
+newEmployees[0] = new Employee("Tom", 45, 80000);
+newEmployees[1] = new Employee("Sam", 56, 75000);
+newEmployees[2] = new Employee("Alex", 30, 120000);
+newEmployees[3] = new Employee("Peter", 25, 60000);
+ 
+System.out.println("Before sorting: " + Arrays.toString(newEmployees));
+ 
+Arrays.sort(newEmployees, new EmployeeSalaryComparator());
+ 
+System.out.println("After sorting: " + Arrays.toString(newEmployees));
+Output:
+
+1
+2
+	
+Before sorting: [(Tom, 80000), (Sam, 75000), (Alex, 120000), (Peter, 60000)]
+After sorting: [(Peter, 60000), (Sam, 75000), (Tom, 80000), (Alex, 120000)]
+As you can see, this sort result is same as the result of implementing the Comparable interface. But using a Comparator, we don’t need to make the Employee class implements the Comparable interface, because the objects ordering is imposed by the comparator itself, not by the objects being compared. In addition, we can create another comparator to sort the array on different fields when needed. For example, the following comparator will sort the employees by their ages in ascending order:
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+	
+package net.codejava.arrays;
+ 
+import java.util.Comparator;
+ 
+/**
+ * This comparator compares two employees by their ages (younger first).
+ * @author www.codejava.net
+ *
+ */
+public class EmployeeAgeComparator implements Comparator<Employee> {
+ 
+    @Override
+    public int compare(Employee emp1, Employee emp2) {
+        return emp1.getAge() - emp2.getAge();
+    }
+}
+It’s also common to create the comparator as an anonymous class which is passed directly into the Arrays.sort() method. For example, the following code sorts the array by the employee’s ages:
+
+1
+2
+3
+4
+5
+6
+	
+Arrays.sort(newEmployees, new Comparator<Employee>() {
+    @Override
+    public int compare(Employee emp1, Employee emp2) {
+        return emp1.getName().compareTo(emp2.getName());
+    }
+});
+Furthermore, using the Comparator, we can manipulate complex sorting conditions, e.g. sorting on multiple attributes of the objects. For more information, see: Sorting a list by multiple attributes example.
+
+ 
+
+Recommended Book: Java Generics and Collections 
+
+public class Solution {
+    // DO NOT MODIFY THE LIST
+    public String largestNumber(final List<Integer> a) {
+    
+    String[] arr = new String[a.size()];
+    for (int i = 0; i < a.size(); i++) {
+        arr[i] = String.valueOf(a.get(i));
+    }
+    
+    
+    Arrays.sort(arr, new Comparator<String>(){
+        public int compare(String a, String b){
+            return (b+a).compareTo(a+b);
+        }
+    });
+    for (int i = 0; i < a.size(); i++) {
+   System.out.print(arr[i]);}
+   System.out.print("lol");
+    StringBuilder sb = new StringBuilder();
+    for(String s: arr){
+        sb.append(s);
+    }
+ 
+    if(sb.charAt(0) == '0'){     //check if all zeroes are there
+        return String.valueOf(0);
+    }
+    
+    return sb.toString();   
+    }
+}
+// geeks for geeks
+
+import java.util.*; 
+import java.lang.*; 
+import java.io.*; 
+  
+// A class to represent a student. 
+class Student 
+{ 
+    int rollno; 
+    String name, address; 
+  
+    // Constructor 
+    public Student(int rollno, String name, 
+                               String address) 
+    { 
+        this.rollno = rollno; 
+        this.name = name; 
+        this.address = address; 
+    } 
+  
+    // Used to print student details in main() 
+    public String toString() 
+    { 
+        return this.rollno + " " + this.name + 
+                           " " + this.address; 
+    } 
+} 
+  
+class Sortbyroll implements Comparator<Student> 
+{ 
+    // Used for sorting in ascending order of 
+    // roll number 
+    public int compare(Student a, Student b) 
+    { 
+        return a.rollno - b.rollno; 
+    } 
+} 
+  
+class Sortbyname implements Comparator<Student> 
+{ 
+    // Used for sorting in ascending order of 
+    // roll name 
+    public int compare(Student a, Student b) 
+    { 
+        return a.name.compareTo(b.name); 
+    } 
+} 
+  
+// Driver class 
+class Main 
+{ 
+    public static void main (String[] args) 
+    { 
+        ArrayList<Student> ar = new ArrayList<Student>(); 
+        ar.add(new Student(111, "bbbb", "london")); 
+        ar.add(new Student(131, "aaaa", "nyc")); 
+        ar.add(new Student(121, "cccc", "jaipur")); 
+  
+        System.out.println("Unsorted"); 
+        for (int i=0; i<ar.size(); i++) 
+            System.out.println(ar.get(i)); 
+  
+        Collections.sort(ar, new Sortbyroll()); 
+  
+        System.out.println("\nSorted by rollno"); 
+        for (int i=0; i<ar.size(); i++) 
+            System.out.println(ar.get(i)); 
+  
+        Collections.sort(ar, new Sortbyname()); 
+  
+        System.out.println("\nSorted by name"); 
+        for (int i=0; i<ar.size(); i++) 
+            System.out.println(ar.get(i)); 
+    } 
+} 
+//////////////////////////////////////////////////////////////////////////////////////

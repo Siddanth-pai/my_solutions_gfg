@@ -1,0 +1,45 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+//maximum sub contagious sum
+//2
+5
+1 2 3 -2 5
+4
+-1 -2 -3 -4
+
+9
+-1
+class GFG {
+	
+		//code
+		
+		public static void main (String[] args) 
+    { Scanner sc = new Scanner(System.in);
+       int ntc , size; 
+	ntc=sc.nextInt();;
+	while(ntc !=0){
+	   size=sc.nextInt();
+	   int arr[] = new int[size];
+	    for(int i=0;i<size; i++) arr[i]=sc.nextInt();;
+	    kadane(arr,size);
+	    ntc--;
+	}
+	
+    } 
+	
+	
+	
+	static int kadane(int a[],int size){
+	    
+	   int csize = a[0];
+	   int gsize = a[0];
+	   for(int i = 1;i<size;i++){
+	       csize = Math.max(a[i],csize + a[i]);
+	       gsize = Math.max(gsize,csize);
+	   }
+	   System.out.println(gsize);
+	    return 0;
+	}	
+	
+}
